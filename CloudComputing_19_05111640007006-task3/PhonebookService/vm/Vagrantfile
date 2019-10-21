@@ -1,0 +1,18 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "sister-tugas3" do |sister|
+    # Box Settings
+    sister.vm.box = "bento/ubuntu-16.04"
+    sister.vm.hostname = "sister-tugas3"
+
+    # Provider Settings
+    sister.vm.provider "virtualbox" do |vb|
+      # Display the VirtualBox GUI when booting the machine
+      vb.gui = false
+      vb.name = "sister-tugas3"
+      # Customize the amount of memory on the VM:
+      vb.memory = "1024"
+    end
+
+    sister.vm.network "private_network", ip: "35.35.35.35"
+  end
+end
