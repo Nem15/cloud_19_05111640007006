@@ -1,0 +1,12 @@
+Vagrant.configure('2') do |config|
+   config.vm.define :control do |control|
+     control.vm.box = "bento/ubuntu-16.04"
+     control.vm.hostname = "mesin1"
+     control.vm.network :public_network
+     control.vm.network :private_network, ip: "25.25.25.25"
+     control.vm.provider :kvm do |kvm, override|
+        kvm.memory_size     = '1536m'
+     end
+   end
+   config.vm.provision "shell", path:"provision.sh"
+end
